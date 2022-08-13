@@ -1,3 +1,24 @@
+## Helm Charts Repo Usage
+
+[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
+
+Once Helm has been set up correctly, add the repo as follows:
+
+  helm repo add fpt-blc-lab https://fpt-blockchain-lab.github.io/helm-charts
+
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages.  You can then run `helm search repo
+fpt-blc-lab` to see the charts.
+
+To install the <chart-name> chart:
+
+    helm install my-<chart-name> fpt-blc-lab/<chart-name>
+
+To uninstall the chart:
+
+    helm delete my-<chart-name>
+
 # Helm Charts
 
 Each helm chart that you can use has the following keys and you need to set them. The `cluster.provider` is used as a key for the various cloud features enabled. Also you only need to specify one cloud provider, **not** both if deploying to cloud. As of writing this doc, AWS and Azure are fully supported.
