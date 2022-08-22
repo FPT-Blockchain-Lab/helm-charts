@@ -340,6 +340,7 @@ helm install new-org-1 ./charts/goquorum-node --namespace quorum --values ./valu
 Get node details
 ```
 kubectl get secret goquorum-node-new-org-1-keys -nquorum -ojson | jq -r ".data[\"nodekey.pub\"]" | base64 -d
+kubectl get secret goquorum-node-new-org-1-keys -nquorum -ojson | jq -r ".data[\"accountAdddress\"]" | base64 -d
 ```
 
 Create new org with network admin
