@@ -330,6 +330,25 @@ helm upgrade --install validator-6 ./charts/goquorum-node --namespace quorum --v
 helm upgrade --install validator-7 ./charts/goquorum-node --namespace quorum --values ./values/validator.yml --atomic
 ```
 
+### Add New ORG
+
+Deploy new node
+```
+helm install new-org-1 ./charts/goquorum-node --namespace quorum --values ./values/validator.yml
+```
+
+Get node details
+```
+kubectl get secret goquorum-node-new-org-1-keys -nquorum -ojson | jq -r ".data[\"nodekey.pub\"]" | base64 -d
+```
+
+Create new org with network admin
+https://consensys.net/docs/goquorum/en/latest/reference/api-methods/#quorumpermission_addorg
+
+Approve org with network admin
+https://consensys.net/docs/goquorum/en/latest/reference/api-methods/#quorumpermission_approveorg
+
+
 ### External Validator
 
 #### FPT Blockchain Lab cluster
