@@ -113,7 +113,7 @@ After the checking succesfully executed, please follow this guide [link](https:/
 ```bash
 helm repo add longhorn https://charts.longhorn.io
 helm repo update
-helm upgrade --install longhorn longhorn/longhorn --version 1.3.0 --namespace admin --create-namespace --values ./values/longhorn.yml 
+helm upgrade --install longhorn longhorn/longhorn --version 1.3.0 --namespace admin --create-namespace --values ./values/longhorn.yml --set persistence.defaultClass=false
 # To check the deployment succeeded, run
 kubectl -n admin get pod -w
 ```

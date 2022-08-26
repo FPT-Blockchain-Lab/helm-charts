@@ -27,9 +27,9 @@ azure:
   subscriptionId: azure-subscriptionId
 
 storage:
-  storageClass: "quorum-node-storage"
-  sizeLimit: "5Gi"
-  pvcSizeLimit: "5Gi"
+  storageClass: "local-path"
+  sizeLimit: "1Gi"
+  pvcSizeLimit: "1Gi"
   # NOTE: when you set this to Retain, the volume WILL persist after the chart is delete and you need to manually delete it
   reclaimPolicy: "Delete" # choose from: Delete | Retain 
 
@@ -109,8 +109,8 @@ node:
 
 image:
   goquorum:
-    repository: quorumengineering/quorum
-    tag: 22.4.0
+    repository: noobmdev/quorum-test
+    tag: v0.2
   tessera:
     repository: quorumengineering/tessera
     tag: 22.1.1

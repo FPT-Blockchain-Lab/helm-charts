@@ -285,6 +285,22 @@ spec:
             mkdir -p {{ .Values.node.goquorum.dataPath }}/keystore/
             cp {{ .Values.node.goquorum.keysPath }}/accountKeystore {{ .Values.node.goquorum.dataPath }}/keystore/key;
 
+            mkdir -p /_workspace/test/
+            GETH_DIR=$(which geth)
+            ls $GETH_DIR
+            PRIVATE_CONFIG=ignore \
+            geth \
+              --nodiscover \
+              --verbosity 5 \
+              --networkid 10 \
+              --raft \
+              --raftjoinexisting 1 \
+              --datadir /_workspace/test/ \
+              --http \
+              --http.api eth,debug,admin,net,web3,plugin@helloworld \
+              --plugins file://./usr/local/bin/plugins/geth-plugin-settings.json \
+              --plugins.skipverify
+
             geth \
             --datadir {{ .Values.node.goquorum.dataPath }} \
             --nodiscover \
@@ -311,7 +327,7 @@ spec:
             --ptm.timeout 5 --ptm.url {{ .Values.node.goquorum.privacy.url }} --ptm.http.writebuffersize 4096 --ptm.http.readbuffersize 4096 --ptm.tls.mode off \
           {{- end }}          
           {{- if hasKey .Values.node.goquorum.account "unlock" }}
-             --unlock {{ .Values.node.goquorum.account.unlock }} --allow-insecure-unlock --password {{ .Values.node.goquorum.account.passwordPath }} \
+            --unlock {{ .Values.node.goquorum.account.unlock }} --allow-insecure-unlock --password {{ .Values.node.goquorum.account.passwordPath }} \
           {{- end }}
 
         livenessProbe:
