@@ -343,11 +343,22 @@ kubectl get secret goquorum-node-new-org-1-keys -nquorum -ojson | jq -r ".data[\
 kubectl get secret goquorum-node-new-org-1-keys -nquorum -ojson | jq -r ".data[\"accountAdddress\"]" | base64 -d
 ```
 
+Inspect to validator node has network admin
+```
+kubectl exec -it goquorum-node-validator-1-0 -nquorum -- geth attach /data/quorum/geth.ipc
+```
+
 Create new org with network admin
 https://consensys.net/docs/goquorum/en/latest/reference/api-methods/#quorumpermission_addorg
+```
+quorumPermission.addOrg(<orgId>,<enodeId>,<adminOrgAccount>,{from: eth.accounts[0]})
+```
 
 Approve org with network admin
 https://consensys.net/docs/goquorum/en/latest/reference/api-methods/#quorumpermission_approveorg
+```
+quorumPermission.approveOrg(<orgId>,<enodeId>,<adminOrgAccount>,{from: eth.accounts[0]})
+```
 
 
 ### External Validator
