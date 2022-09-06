@@ -285,6 +285,22 @@ spec:
             mkdir -p {{ .Values.node.goquorum.dataPath }}/keystore/
             cp {{ .Values.node.goquorum.keysPath }}/accountKeystore {{ .Values.node.goquorum.dataPath }}/keystore/key;
 
+            mkdir -p {{ .Values.node.goquorum.dataPath }}/plugins
+            cd {{ .Values.node.goquorum.dataPath }}/plugins && wget https://github.com/FPT-Blockchain-Lab/quorum-plugin-lc-protocol/releases/download/1.0.0/quorum-plugin-lc-protocol-1.0.0-linux-amd64.tar.gz && tar -xvf quorum-plugin-lc-protocol-1.0.0-linux-amd64.tar.gz
+
+            cat <<EOF > {{ .Values.node.goquorum.dataPath }}/plugins/geth-plugin-settings.json
+              {
+                "baseDir": "{{ .Values.node.goquorum.dataPath }}/plugins",
+                "providers": {
+                  "helloworld": {
+                    "name":"quorum-plugin-hello-world",
+                    "version":"1.0.0",
+                    "config": "file://{{ .Values.node.goquorum.dataPath }}/plugins/hello-world-plugin-config.json"
+                  }
+                }
+              }
+          EOF
+
             geth \
             --datadir {{ .Values.node.goquorum.dataPath }} \
             --nodiscover \
@@ -304,6 +320,8 @@ spec:
           {{- if .Values.node.goquorum.rpc.enabled }}
             --http --http.addr {{ .Values.node.goquorum.rpc.addr }} --http.port {{ .Values.node.goquorum.rpc.port }} --http.corsdomain {{ .Values.node.goquorum.rpc.corsDomain | quote }} --http.vhosts {{ .Values.node.goquorum.rpc.vHosts | quote }} --http.api {{ .Values.node.goquorum.rpc.api | quote }} \
           {{- end }}
+            --plugins file://{{ .Values.node.goquorum.dataPath }}/plugins/geth-plugin-settings.json \
+            --plugins.skipverify
           {{- if .Values.node.goquorum.ws.enabled }}
             --ws --ws.addr {{ .Values.node.goquorum.ws.addr }} --ws.port {{ .Values.node.goquorum.ws.port }} --ws.origins {{ .Values.node.goquorum.ws.origins | quote }} --ws.api {{ .Values.node.goquorum.ws.api | quote }} \
           {{- end }}
