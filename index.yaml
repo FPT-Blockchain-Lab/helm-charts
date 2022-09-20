@@ -111,4 +111,28 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-node-0.1.2/goquorum-node-0.1.2.tgz
     version: 0.1.2
-generated: "2022-09-06T03:59:52.607687365Z"
+  lc:
+  - apiVersion: v1
+    appVersion: v0.1.0
+    created: "2022-09-20T11:33:50.438386632Z"
+    description: lc protocol
+    digest: 2433def57c6dda077f5e0a87bcfc8ad8f97601974f403e8e04e375eda4e507ff
+    icon: http://besu.hyperledger.org/en/latest/favicon.ico
+    keywords:
+    - ethereum
+    - besu
+    - hyperledger
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    - lc
+    maintainers:
+    - name: Truong Ma Phi
+    name: lc
+    sources:
+    - https://github.com/FPT-Blockchain-Lab
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/lc-0.1.1/lc-0.1.1.tgz
+    version: 0.1.1
+generated: "2022-09-20T11:33:50.438398732Z"
