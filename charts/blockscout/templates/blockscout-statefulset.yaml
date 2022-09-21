@@ -119,7 +119,13 @@ spec:
           - name: ETHEREUM_JSONRPC_WS_URL
             value: ws://{{ .Values.blockscout.ethereum_jsonrpc_endpoint }}:8546
           - name: SECRET_KEY_BASE
-            value: {{ .Values.blockscout.secret_key_base }}        
+            value: {{ .Values.blockscout.secret_key_base }}      
+          - name: COIN_NAME
+            value: {{ .Values.blockscout.coin_name }}       
+          - name: JSON_RPC
+            value: {{ .Values.blockscout.json_rpc }}       
+          - name: RUST_VERIFICATION_SERVICE_URL
+            value:  http://{{ .Values.blockscout.rust_verification_service_url }}:8043       
         ports:
           - name: http
             containerPort: {{ .Values.blockscout.port }}

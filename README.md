@@ -181,10 +181,13 @@ GRANT ALL PRIVILEGES ON DATABASE subgraph TO subgraph;
 **Notes** Blockscout use subchart of postgresql. The default value of subchart is configured at helm/charts/blockscout/values.yaml postgresql
 
 ```bash
+# Install smart-contract-verier 
+helm upgrade --install smart-contract-verifier ./charts/smart-contract-verifier --namespace quorum --debug --atomic
+
 helm dependency update ./charts/blockscout
 
 # For GoQuorum
-helm upgrade --install blockscout ./charts/blockscout --namespace quorum --values ./values/blockscout-goquorum.yml
+helm upgrade --install blockscout ./charts/blockscout --namespace quorum --values ./values/blockscout-goquorum.yml --debug --atomic
 
 # For Besu
 helm install blockscout ./charts/blockscout --namespace quorum --values ./values/blockscout-besu.yml
