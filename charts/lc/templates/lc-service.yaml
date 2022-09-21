@@ -43,6 +43,10 @@ spec:
       port: 8040
       targetPort: metrics
       protocol: TCP
+    - name: ipfs
+      port: 5001
+      targetPort: ipfs
+      protocol: TCP
 
 # ---
 # apiVersion: v1

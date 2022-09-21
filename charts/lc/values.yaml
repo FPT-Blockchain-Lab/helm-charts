@@ -1,10 +1,10 @@
 ---
 image:
-  subgraph:
+  ipfs:
     repository: ipfs/go-ipfs
     tag: v0.4.23
     pullPolicy: IfNotPresent
-  ipfs:
+  subgraph:
     repository: graphprotocol/graph-node
     tag: v0.26.0
     pullPolicy: IfNotPresent
@@ -21,8 +21,8 @@ postgresql:
 
 subgraph:
   postgrest_connection_url: "postgresql://subgraph:subgraph@postgresql.quorum.svc.cluster.local:5432/subgraph?ssl=false"
-  ipfs_endpoint: ipfs-1
-  ethereum_jsonrpc_endpoint: goquorum-node-rpc-1
+  ipfs_endpoint: lc
+  ethereum_jsonrpc_endpoint: goquorum-node-validator-1
 storage:
   className: longhorn
   size: 1Gi

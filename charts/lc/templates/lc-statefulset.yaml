@@ -92,10 +92,10 @@ spec:
             cpu: "{{ .Values.resources.ipfs.cpuLimit }}"
             memory: "{{ .Values.resources.ipfs.memLimit }}"
         volumeMounts:
-          - name: ipfs
+          - name: data
             mountPath: /data/ipfs
         ports:
-          - name: default
+          - name: ipfs
             containerPort: 5001
       - name: {{ .Release.Name }}-subgraph
         image: {{ .Values.image.subgraph.repository }}:{{ .Values.image.subgraph.tag }}
