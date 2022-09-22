@@ -100,8 +100,6 @@ spec:
             value: {{ .Values.blockscout.postgres_password }}
           - name: POSTGRES_USER
             value: {{ .Values.blockscout.postgres_user }}
-          - name: NETWORK
-            value: {{ .Values.blockscout.network }}
           - name: SUBNETWORK
             value: {{ .Values.blockscout.subnetwork }}
           - name: CHAIN_ID
@@ -123,17 +121,19 @@ spec:
           - name: COIN_NAME
             value: {{ .Values.blockscout.coin_name }}       
           - name: JSON_RPC
-            value: {{ .Values.blockscout.json_rpc }}       
+            value: {{ .Values.blockscout.json_rpc }}   
+          - name: ENABLE_RUST_VERIFICATION_SERVICE
+            value: {{ .Values.blockscout.enable_rust_verification_service }}
           - name: RUST_VERIFICATION_SERVICE_URL
-            value:  http://{{ .Values.blockscout.rust_verification_service_url }}:8043       
+            value: http://{{ .Values.blockscout.rust_verification_service_url }}:8043    
+          - name: LOGO
+            value: {{ .Values.blockscout.logo }}       
         ports:
           - name: http
             containerPort: {{ .Values.blockscout.port }}
             protocol: TCP
         command:
-          - /bin/sh
+          - bash
           - -c
         args:
-          - |
-            exec
-            cd /opt/app/ && echo $$MIX_ENV && mix do ecto.create, ecto.migrate; mix phx.server;
+          - "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"

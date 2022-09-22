@@ -2,7 +2,7 @@
 image:
   blockscout:
     repository: blockscout/blockscout
-    tag: 4.1.5
+    tag: 4.1.8
     pullPolicy: IfNotPresent
 
 blockscout: # cpu dependent
@@ -13,14 +13,15 @@ blockscout: # cpu dependent
     memRequest: "1G"
   database_url: "postgresql://blockscout:newpassword@1.54.89.227:5432:5432/testnet_blockscout1?ssl=false"
   postgres_user: blockscout
-  network: quorum
   subnetwork: consensys
   chain_id: 1337
   coin: eth
   ethereum_jsonrpc_variant: geth
   ethereum_jsonrpc_transport: http
-  ethereum_jsonrpc_endpoint: "goquorum-node-rpc-1.quorum.svc.cluster.local" # service name to be used
+  ethereum_jsonrpc_endpoint: "goquorum-node-validator-1.quorum.svc.cluster.local" # service name to be used
   secret_key_base: "VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221" # change me please
   coin_name: FPT
   json_rpc: http://1.54.89.229:32716/
+  enable_rust_verification_service: "true"
   rust_verification_service_url: smart-contract-verifier.quorum.svc.cluster.local
+  logo: /images/blockscout_logo.svg
