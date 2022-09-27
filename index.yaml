@@ -26,6 +26,28 @@ entries:
   goquorum-genesis:
   - apiVersion: v1
     appVersion: latest
+    created: "2022-09-27T15:32:25.527884882Z"
+    description: Quorum Genesis generator with Helm chart in Kubernetes
+    digest: 4ac26a9f7cbf49eb841f1cf68e00eb6daba8a2e3edd2bd75f9904e791abfd8f7
+    home: https://consensys.net/quorum/
+    keywords:
+    - ethereum
+    - quorum
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    maintainers:
+    - email: joshua.fernandes@consensys.net
+      name: Joshua Fernandes
+    name: goquorum-genesis
+    sources:
+    - https://consensys.net/quorum/
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-genesis-0.1.2/goquorum-genesis-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v1
+    appVersion: latest
     created: "2022-09-27T15:19:09.694373591Z"
     description: Quorum Genesis generator with Helm chart in Kubernetes
     digest: 28a552179b76223a37d315bb4914aae8ce32e5c04228e626aca86e57fcdd8bf4
@@ -225,4 +247,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/lc-0.1.1/lc-0.1.1.tgz
     version: 0.1.1
-generated: "2022-09-27T15:30:56.318055471Z"
+generated: "2022-09-27T15:32:25.527905282Z"
