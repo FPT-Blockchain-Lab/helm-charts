@@ -1,5 +1,51 @@
 apiVersion: v1
 entries:
+  goquorum-enhanced-permission:
+  - apiVersion: v1
+    appVersion: latest
+    created: "2022-09-27T15:19:09.534577437Z"
+    description: Quorum Enhanced Permission deploy with Helm chart in Kubernetes
+    digest: f9126757981d3cdd8bb28170dd2e7b0c8887ca4f5678c0dd769b4b8bc10673c3
+    home: https://consensys.net/quorum/
+    keywords:
+    - ethereum
+    - quorum
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    maintainers:
+    - email: toanledev@gmail.com
+      name: Toan Le
+    name: goquorum-enhanced-permission
+    sources:
+    - https://consensys.net/quorum/
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-enhanced-permission-0.0.2/goquorum-enhanced-permission-0.0.2.tgz
+    version: 0.0.2
+  goquorum-genesis:
+  - apiVersion: v1
+    appVersion: latest
+    created: "2022-09-27T15:19:09.694373591Z"
+    description: Quorum Genesis generator with Helm chart in Kubernetes
+    digest: 28a552179b76223a37d315bb4914aae8ce32e5c04228e626aca86e57fcdd8bf4
+    home: https://consensys.net/quorum/
+    keywords:
+    - ethereum
+    - quorum
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    maintainers:
+    - email: joshua.fernandes@consensys.net
+      name: Joshua Fernandes
+    name: goquorum-genesis
+    sources:
+    - https://consensys.net/quorum/
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-genesis-0.1.1/goquorum-genesis-0.1.1.tgz
+    version: 0.1.1
   goquorum-node:
   - apiVersion: v1
     appVersion: v22.4.0
@@ -157,4 +203,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/lc-0.1.1/lc-0.1.1.tgz
     version: 0.1.1
-generated: "2022-09-22T08:25:19.412192119Z"
+generated: "2022-09-27T15:19:09.694387891Z"
