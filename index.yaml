@@ -48,6 +48,28 @@ entries:
     version: 0.1.1
   goquorum-node:
   - apiVersion: v1
+    appVersion: v22.7.1
+    created: "2022-09-27T15:30:56.318031271Z"
+    description: Quorum node for a POA network using IBFT for consensys
+    digest: 33bb87c4404248f0145fb24128a904328af1f511c7005cc9f9cf5448b67d73f9
+    home: https://consensys.net/quorum/
+    keywords:
+    - ethereum
+    - hyperledger
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    maintainers:
+    - email: joshua.fernandes@consensys.net
+      name: Joshua Fernandes
+    name: goquorum-node
+    sources:
+    - https://github.com/consensys/quorum
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-node-0.1.8/goquorum-node-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v1
     appVersion: v22.4.0
     created: "2022-09-22T08:25:19.412168419Z"
     description: Quorum node for a POA network using IBFT for consensys
@@ -203,4 +225,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/lc-0.1.1/lc-0.1.1.tgz
     version: 0.1.1
-generated: "2022-09-27T15:19:09.694387891Z"
+generated: "2022-09-27T15:30:56.318055471Z"
