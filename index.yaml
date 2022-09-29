@@ -93,6 +93,28 @@ entries:
   goquorum-node:
   - apiVersion: v1
     appVersion: v22.7.1
+    created: "2022-09-29T17:57:11.000107306Z"
+    description: Quorum node for a POA network using IBFT for consensys
+    digest: b5dfe0350e5b79d43a9d40dcef5eb520a74346fbb010d1e6a4ec2934cabb6da2
+    home: https://consensys.net/quorum/
+    keywords:
+    - ethereum
+    - hyperledger
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    maintainers:
+    - email: joshua.fernandes@consensys.net
+      name: Joshua Fernandes
+    name: goquorum-node
+    sources:
+    - https://github.com/consensys/quorum
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-node-0.2.1/goquorum-node-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v1
+    appVersion: v22.7.1
     created: "2022-09-28T09:16:23.546972754Z"
     description: Quorum node for a POA network using IBFT for consensys
     digest: 3ad15da40c5dc5e41ecb0bb00aababbe379ea7677a5a701789e20e9f2a9275f9
@@ -313,4 +335,15 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/lc-0.1.1/lc-0.1.1.tgz
     version: 0.1.1
-generated: "2022-09-28T09:16:23.54734146Z"
+  smart-contract-verifier:
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2022-09-29T17:57:11.190678215Z"
+    description: A Helm chart for Kubernetes
+    digest: 4071464b988c2bdcc5710efae3a2699830b4dcf5499b7956d6fe4f6b40780588
+    name: smart-contract-verifier
+    type: application
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/smart-contract-verifier-0.1.0/smart-contract-verifier-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-09-29T17:57:11.190732416Z"
