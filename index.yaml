@@ -1,5 +1,32 @@
 apiVersion: v1
 entries:
+  blockscout:
+  - apiVersion: v2
+    created: "2022-09-29T18:00:28.188004578Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.x.x
+    - name: smart-contract-verifier
+      repository: https://fpt-blockchain-lab.github.io/helm-charts
+      version: 0.1.0
+    description: 'BlockScout provides a comprehensive, easy-to-use interface for users
+      to view, confirm, and inspect transactions on EVM (Ethereum Virtual Machine)
+      blockchains '
+    digest: 31047f638cdeb3c3b065d53a3d78df0b99fd2a590434f2fd774abe7b450d5143
+    home: https://docs.blockscout.com/
+    icon: https://github.com/blockscout/blockscout/raw/master/apps/block_scout_web/assets/static/apple-touch-icon.png
+    maintainers:
+    - email: rafael@skyle.net
+      name: skylenet
+    name: blockscout
+    sources:
+    - https://github.com/blockscout/blockscout/
+    type: application
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/blockscout-0.1.3/blockscout-0.1.3.tgz
+    version: 0.1.3
   goquorum-enhanced-permission:
   - apiVersion: v1
     appVersion: latest
@@ -346,4 +373,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/smart-contract-verifier-0.1.0/smart-contract-verifier-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-29T17:57:11.190732416Z"
+generated: "2022-09-29T18:00:28.18807488Z"
