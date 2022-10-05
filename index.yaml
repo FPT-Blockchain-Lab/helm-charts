@@ -53,6 +53,28 @@ entries:
   goquorum-genesis:
   - apiVersion: v1
     appVersion: latest
+    created: "2022-10-05T05:02:22.761594151Z"
+    description: Quorum Genesis generator with Helm chart in Kubernetes
+    digest: 5f12ba28b4a2adae83fcc87a71587afc9c9019b57d1febee4687164b4c4cee74
+    home: https://consensys.net/quorum/
+    keywords:
+    - ethereum
+    - quorum
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    maintainers:
+    - email: joshua.fernandes@consensys.net
+      name: Joshua Fernandes
+    name: goquorum-genesis
+    sources:
+    - https://consensys.net/quorum/
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-genesis-0.1.4/goquorum-genesis-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v1
+    appVersion: latest
     created: "2022-09-27T15:52:17.266129178Z"
     description: Quorum Genesis generator with Helm chart in Kubernetes
     digest: 504a0ef5999f0bda2bb8a44bb8bec505e045e4acb9dd2575244003c1c791b903
@@ -118,6 +140,28 @@ entries:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-genesis-0.1.1/goquorum-genesis-0.1.1.tgz
     version: 0.1.1
   goquorum-node:
+  - apiVersion: v1
+    appVersion: v22.7.1
+    created: "2022-10-05T05:02:22.926830133Z"
+    description: Quorum node for a POA network using IBFT for consensys
+    digest: 7a305c3213b6cb361fcf847c26076b419464a13a5eec0dbb200d04092e421ba7
+    home: https://consensys.net/quorum/
+    keywords:
+    - ethereum
+    - hyperledger
+    - enterprise
+    - blockchain
+    - pegasys
+    - consensys
+    maintainers:
+    - email: joshua.fernandes@consensys.net
+      name: Joshua Fernandes
+    name: goquorum-node
+    sources:
+    - https://github.com/consensys/quorum
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-node-0.2.2/goquorum-node-0.2.2.tgz
+    version: 0.2.2
   - apiVersion: v1
     appVersion: v22.7.1
     created: "2022-09-29T17:57:11.000107306Z"
@@ -373,4 +417,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/smart-contract-verifier-0.1.0/smart-contract-verifier-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-29T18:00:28.18807488Z"
+generated: "2022-10-05T05:02:22.926897977Z"
