@@ -431,6 +431,16 @@ entries:
   smart-contract-verifier:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2022-10-05T10:19:48.974395153Z"
+    description: A Helm chart for Kubernetes
+    digest: 3fa972d49baf8548497e1c1e6d58af36b96ec5b2edd88a4db4ae3ed7aaed7da5
+    name: smart-contract-verifier
+    type: application
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/smart-contract-verifier-0.1.1/smart-contract-verifier-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2022-09-29T17:57:11.190678215Z"
     description: A Helm chart for Kubernetes
     digest: 4071464b988c2bdcc5710efae3a2699830b4dcf5499b7956d6fe4f6b40780588
@@ -439,4 +449,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/smart-contract-verifier-0.1.0/smart-contract-verifier-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-05T05:14:05.778088179Z"
+generated: "2022-10-05T10:19:48.974469854Z"
