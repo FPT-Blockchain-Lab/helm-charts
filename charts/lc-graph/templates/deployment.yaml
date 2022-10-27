@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "lc-graph.fullname" . }}
+  labels:
+    {{- include "lc-graph.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "lc-graph.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "lc-graph.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name}}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: ["-c", "/app/config/config.toml"]
+          ports: 
+            - name: http
+              containerPort: {{ .Values.containerPort }}
+              protocol: TCP
+          env:
+            - name: POSTGRES_URL
+              value: {{ .Values.subgraph.postgrest_connection_url | quote }}
+            - name: R_POSTGRES_DATABASE
+              value: {{ .Values.postgresql.auth.read.database }}
+            - name: R_POSTGRES_USERNAME
+              value: {{ .Values.postgresql.auth.read.username }}
+            - name: R_POSTGRES_PASSWORD
+              value: {{ .Values.postgresql.auth.read.password }}
+            - name: R_POSTGRES_PORT
+              value: {{ .Values.postgresql.auth.read.port }}
+            - name: W_POSTGRES_DATABASE
+              value: {{ .Values.postgresql.auth.write.database }}
+            - name: W_POSTGRES_USERNAME
+              value: {{ .Values.postgresql.auth.write.username }}
+            - name: W_POSTGRES_PASSWORD
+              value: {{ .Values.postgresql.auth.write.password }}
+            - name: W_POSTGRES_PORT
+              value: {{ .Values.postgresql.auth.write.port }}
+          livenessProbe: 
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 60
+            initialDelaySeconds: 180
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 60
+            initialDelaySeconds: 180
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: config
+            mountPath: /app/config
+            readOnly: true
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config
+          configMap: 
+            name: {{ .Release.Name }}-configmap
