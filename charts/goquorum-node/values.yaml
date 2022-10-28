@@ -123,7 +123,7 @@ node:
 image:
   goquorum:
     repository: fptblockchainlabbot/quorum
-    tag: v22.7.1-fpt.blockchain.lab-0.3.0
+    tag: v22.7.1-fpt.blockchain.lab-0.3.1
   tessera:
     repository: quorumengineering/tessera
     tag: 22.1.1
