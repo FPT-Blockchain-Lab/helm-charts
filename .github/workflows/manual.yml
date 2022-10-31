@@ -1,3 +1,5 @@
+name: Deploy to K8S cluster
+
 on:
   workflow_dispatch:
     inputs:
