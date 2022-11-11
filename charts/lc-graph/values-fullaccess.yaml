@@ -57,6 +57,7 @@ app:
       password: lcgraph
       port: 5432
     write:
+      enabled: true
       database: lcgraph
       username: lcgraph
       password: lcgraph

@@ -59,7 +59,12 @@ postgresql:
     username: lcgraph
     password: lcgraph
     port: 5432
-
+  write:
+    enabled: false
+    database: lcgraph
+    username: lcgraph
+    password: lcgraph
+    port: 5432
 subgraph:
   postgrest_connection_url: "jdbc:postgresql://1.54.89.227:5432/testnet_lc_graph"
   ethereum_jsonrpc_endpoint: goquorum-node-rpc

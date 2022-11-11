@@ -59,14 +59,16 @@ spec:
               value: lcgraph
             - name: R_POSTGRES_PORT
               value: 5432
-            # - name: W_POSTGRES_DATABASE
-            #   value: 
-            # - name: W_POSTGRES_USERNAME
-            #   value: 
-            # - name: W_POSTGRES_PASSWORD
-            #   value: 
-            # - name: W_POSTGRES_PORT
-            #   value: 
+            - name: W_POSTGRES_ENABLED
+              value: true
+            - name: W_POSTGRES_DATABASE
+              value: lcgraph
+            - name: W_POSTGRES_USERNAME
+              value: lcgraph
+            - name: W_POSTGRES_PASSWORD
+              value: lcgraph
+            - name: W_POSTGRES_PORT
+              value: 5432
           livenessProbe: 
             failureThreshold: 3
             httpGet:
@@ -91,7 +93,7 @@ spec:
               memory: 1Gi
             requests:
               cpu: 100m
-              memory: 128Mi
+              memory: 500Mi
           # volumeMounts:
           # - name: config
           #   mountPath: /app/config

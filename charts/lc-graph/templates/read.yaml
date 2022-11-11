@@ -59,6 +59,8 @@ spec:
               value: lcgraph
             - name: R_POSTGRES_PORT
               value: 5432
+            - name: W_POSTGRES_ENABLED
+              value: false
             - name: W_POSTGRES_DATABASE
               value: lcgraph
             - name: W_POSTGRES_USERNAME
@@ -91,7 +93,7 @@ spec:
               memory: 1Gi
             requests:
               cpu: 100m
-              memory: 500Mi
+              memory: 128Mi
           # volumeMounts:
           # - name: config
           #   mountPath: /app/config
