@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lc-graph
+  labels:
+    {{- include "lc-graph.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.app.autoscaling.enabled }}
+  replicas: {{ .Values.app.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "lc-graph.labels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.app.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "lc-graph.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name}}
+          securityContext:
+            {{- toYaml .Values.app.securityContext | nindent 12 }}
+          image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.app.image.pullPolicy }}
+          ports: 
+            - name: http
+              containerPort: {{ .Values.app.containerPort }}
+              protocol: TCP
+          env:
+            - name: POSTGRES_URL
+              value: {{ .Values.app.subgraph.postgrest_connection_url | quote }}
+            - name: R_POSTGRES_DATABASE
+              value: {{ .Values.app.postgresql.read.database }}
+            - name: R_POSTGRES_USERNAME
+              value: {{ .Values.app.postgresql.read.username }}
+            - name: R_POSTGRES_PASSWORD
+              value: {{ .Values.app.postgresql.read.password }}
+            - name: R_POSTGRES_PORT
+              value: {{ .Values.app.postgresql.read.port }}   
+            - name: W_POSTGRES_ENABLED
+              value: {{ .Values.app.portgresql.write.enabled }}       
+            - name: W_POSTGRES_DATABASE
+              value: {{ .Values.app.postgresql.write.database }}
+            - name: W_POSTGRES_USERNAME
+              value: {{ .Values.app.postgresql.write.username }}
+            - name: W_POSTGRES_PASSWORD
+              value: {{ .Values.app.postgresql.write.password }}
+            - name: W_POSTGRES_PORT
+              value: {{ .Values.app.postgresql.write.port }}
+          livenessProbe: 
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 60
+            initialDelaySeconds: 180
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 60
+            initialDelaySeconds: 180
+          resources:
+            {{- toYaml .Values.app.resources | nindent 12 }}
+          # volumeMounts:
+          # - name: config
+          #   mountPath: /app/config
+          #   readOnly: true
+      {{- with .Values.app.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.app.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.app.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config
+          configMap: 
+            name: {{ .Release.Name }}-configmap

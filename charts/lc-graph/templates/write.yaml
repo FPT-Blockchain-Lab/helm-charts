@@ -1,0 +1,104 @@
+---
+# Source: lc-graph-server/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: lc-graph
+  labels:
+    app: lc-graph
+    env: fullaccess
+spec:
+  type: NodePort
+  ports:
+    - port: 8043
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: lc-graph
+    env: fullaccess
+---
+# Source: lc-graph-server/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lc-graph
+  labels:
+    app: lc-graph
+    env: fullaccess
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lc-graph
+      env: fullaccess
+  template:
+    metadata:
+      labels:
+        app: lc-graph
+        env: fullaccess
+    spec:
+      containers:
+        - name: lc-graph-server
+          securityContext:
+            null
+          image: ":v0.1.0"
+          imagePullPolicy: 
+          ports: 
+            - name: http
+              containerPort: 8043
+              protocol: TCP
+          env:
+            - name: POSTGRES_URL
+              value: "jdbc:postgresql://1.54.89.227:5432/testnet_lc_graph"
+            - name: R_POSTGRES_DATABASE
+              value: lcgraph
+            - name: R_POSTGRES_USERNAME
+              value: lcgraph
+            - name: R_POSTGRES_PASSWORD
+              value: lcgraph
+            - name: R_POSTGRES_PORT
+              value: 5432
+            - name: W_POSTGRES_ENABLED
+              value: true
+            - name: W_POSTGRES_DATABASE
+              value: lcgraph
+            - name: W_POSTGRES_USERNAME
+              value: lcgraph
+            - name: W_POSTGRES_PASSWORD
+              value: lcgraph
+            - name: W_POSTGRES_PORT
+              value: 5432
+          livenessProbe: 
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 60
+            initialDelaySeconds: 180
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 60
+            initialDelaySeconds: 180
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 500Mi
+          # volumeMounts:
+          # - name: config
+          #   mountPath: /app/config
+          #   readOnly: true
+      volumes:
+        - name: config
+          configMap: 
+            name: full-access-configmap

@@ -230,7 +230,11 @@ helm install external-validator-1 ./charts/goquorum-node --namespace quorum --va
 helm upgrade --install lc ./charts/lc --namespace quorum --atomic --debug --dry-run
 ```
 
+### LC graph
 
+```
+helm upgrade --install lc-graph ./charts/lc-graph --namespace quorum --atomic --debug --dry-run
+```
 ## Quorum Permission operations
 
 ### Add new ORG
@@ -258,3 +262,5 @@ Ref: https://consensys.net/docs/goquorum/en/latest/reference/api-methods/#quorum
 quorumPermission.approveOrg(<orgId>,<enodeId>,<accountId>,{from: eth.accounts[0]})
 ```
 Ref: https://consensys.net/docs/goquorum/en/latest/reference/api-methods/#quorumpermission_approveorg
+
+0xf8b9a00000000000000000000000000000000000000000000000000000000000000000f89394386f3dbcdc2c52d67e1f3827e408ff26af33e95
