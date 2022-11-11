@@ -512,6 +512,16 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/lc-0.1.1/lc-0.1.1.tgz
     version: 0.1.1
+  lc-graph-server:
+  - apiVersion: v1
+    appVersion: v0.1.0
+    created: "2022-11-11T07:54:51.878684123Z"
+    description: LC graph server Helm chart for Kubernetes
+    digest: 3d9b20d52cbdd50c0df9999abdbea74aa5c0d4dcf4b3308b6ad89252c5d0a989
+    name: lc-graph-server
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/lc-graph-server-0.1.1/lc-graph-server-0.1.1.tgz
+    version: 0.1.1
   smart-contract-verifier:
   - apiVersion: v2
     appVersion: v0.1.0
@@ -533,4 +543,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/smart-contract-verifier-0.1.0/smart-contract-verifier-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-28T06:23:38.236332425Z"
+generated: "2022-11-11T07:54:51.878833624Z"
