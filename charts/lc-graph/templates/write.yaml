@@ -3,9 +3,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: lc-graph
+  name: lc-graph-write
   labels:
-    app: lc-graph
+    app: lc-graph-write
     env: fullaccess
 spec:
   type: NodePort
@@ -15,60 +15,62 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: lc-graph
+    app: lc-graph-write
     env: fullaccess
 ---
 # Source: lc-graph-server/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lc-graph
+  name: lc-graph-write
   labels:
-    app: lc-graph
+    app: lc-graph-write
     env: fullaccess
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lc-graph
+      app: lc-graph-write
       env: fullaccess
   template:
     metadata:
       labels:
-        app: lc-graph
+        app: lc-graph-write
         env: fullaccess
     spec:
       containers:
         - name: lc-graph-server
           securityContext:
             null
-          image: ":v0.1.0"
-          imagePullPolicy: 
+          image: {{ .Values.app.image.repository }}:{{ .Values.app.image.tag | default .Chart.AppVersion }}
+          imagePullPolicy: {{ .Values.app.image.pullPolicy }}
           ports: 
             - name: http
               containerPort: 8043
               protocol: TCP
           env:
-            - name: POSTGRES_URL
-              value: "jdbc:postgresql://1.54.89.227:5432/testnet_lc_graph"
+            - name: R_POSTGRES_HOST
+              value: {{ .Values.app.postgresql.read.host }}
             - name: R_POSTGRES_DATABASE
-              value: lcgraph
+              value: {{ .Values.app.postgresql.read.database }}
             - name: R_POSTGRES_USERNAME
-              value: lcgraph
+              value: {{ .Values.app.postgresql.read.username }}
             - name: R_POSTGRES_PASSWORD
-              value: lcgraph
+              value: {{ .Values.app.postgresql.read.password }}
             - name: R_POSTGRES_PORT
-              value: 5432
+              value: {{ .Values.app.postgresql.read.port }}   
             - name: W_POSTGRES_ENABLED
-              value: true
+              value: "true"
+            - name: W_POSTGRES_HOST
+              value: {{ .Values.app.postgresql.write.host }}    
             - name: W_POSTGRES_DATABASE
-              value: lcgraph
+              value: {{ .Values.app.postgresql.write.database }}
             - name: W_POSTGRES_USERNAME
-              value: lcgraph
+              value: {{ .Values.app.postgresql.write.username }}
             - name: W_POSTGRES_PASSWORD
-              value: lcgraph
+              value: {{ .Values.app.postgresql.write.password }}
             - name: W_POSTGRES_PORT
-              value: 5432
+              value: {{ .Values.app.postgresql.write.port }}
           livenessProbe: 
             failureThreshold: 3
             httpGet:
@@ -93,7 +95,7 @@ spec:
               memory: 1Gi
             requests:
               cpu: 100m
-              memory: 500Mi
+              memory: 128Mi
           # volumeMounts:
           # - name: config
           #   mountPath: /app/config

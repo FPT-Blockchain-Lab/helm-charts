@@ -31,8 +31,8 @@ spec:
               containerPort: {{ .Values.app.containerPort }}
               protocol: TCP
           env:
-            - name: POSTGRES_URL
-              value: {{ .Values.app.subgraph.postgrest_connection_url | quote }}
+            - name: R_POSTGRES_HOST
+              value: {{ .Values.app.postgresql.read.host }}
             - name: R_POSTGRES_DATABASE
               value: {{ .Values.app.postgresql.read.database }}
             - name: R_POSTGRES_USERNAME
@@ -42,7 +42,9 @@ spec:
             - name: R_POSTGRES_PORT
               value: {{ .Values.app.postgresql.read.port }}   
             - name: W_POSTGRES_ENABLED
-              value: {{ .Values.app.portgresql.write.enabled }}       
+              value: {{ .Values.app.postgresql.write.enabled }}   
+            - name: W_POSTGRES_HOST
+              value: {{ .Values.app.postgresql.write.host }}    
             - name: W_POSTGRES_DATABASE
               value: {{ .Values.app.postgresql.write.database }}
             - name: W_POSTGRES_USERNAME
@@ -87,7 +89,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      volumes:
-        - name: config
-          configMap: 
-            name: {{ .Release.Name }}-configmap
+      # volumes:
+      #   - name: config
+      #     configMap: 
+      #       name: {{ .Release.Name }}-configmap

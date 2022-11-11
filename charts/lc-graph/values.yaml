@@ -1,19 +1,15 @@
 app:
   env: fullaccess
   replicaCount: 1
-  image:
-    lc-graph: 
-      repository: https://github.com/FPT-Blockchain-Lab/lc-graph-server
-      tag: main
-      pullPolicy: IfNotPresent
-  containerPort: 8043
+  image: 
+    repository: noobmdev/lc-grapqh
+    tag: latest
+    pullPolicy: IfNotPresent
+  containerPort: 3000
 
   service:
     type: NodePort
     port: 8043
-
-  # You need to provide some config file. For example, just copy `example_config.toml`
-  config: "config.toml"
 
   # Optional
   ingress:
@@ -52,17 +48,15 @@ app:
 
   postgresql:
     read:
-      database: lcgraph
-      username: lcgraph
-      password: lcgraph
+      host: "1.54.89.227"
+      database: testnet_blockscout
+      username: postgres
+      password: WszvC3*^y%oYA5
       port: 5432
     write:
-      enabled: false
-      database: lcgraph
-      username: lcgraph
-      password: lcgraph
+      enabled: "false"
+      host: "1.54.89.227"
+      database: testnet_lc_graph
+      username: postgres
+      password: WszvC3*^y%oYA5
       port: 5432
-
-  subgraph:
-    postgrest_connection_url: "jdbc:postgresql://1.54.89.227:5432/testnet_lc_graph"
-    ethereum_jsonrpc_endpoint: goquorum-node-rpc
