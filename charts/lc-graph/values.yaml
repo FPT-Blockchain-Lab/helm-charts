@@ -48,15 +48,15 @@ app:
 
   postgresql:
     read:
-      host: "1.54.89.227"
-      database: testnet_blockscout
+      host: 1.23.24.256
+      database: postgres
       username: postgres
-      password: WszvC3*^y%oYA5
+      password: postgres
       port: 5432
     write:
-      enabled: "false"
-      host: "1.54.89.227"
-      database: testnet_lc_graph
+      enabled: false
+      host: 1.23.24.256
+      database: postgres
       username: postgres
-      password: WszvC3*^y%oYA5
+      password: postgres
       port: 5432
