@@ -39,7 +39,13 @@ serviceAccount:
 
 node:
   goquorum:
-    env:        
+    env:
+      LC_ADMEND_REQUEST_ADDRESS: "0x9043A4b3ABF6210cdfA95e7ef9B2e1fC8D17d38E"
+      LC_MANAGEMENT_ADDRESS: "0x3179C0dDF36a95A9BaEe917fF2D4dbFa08B51462"
+      LC_STANDARD_FACTORY_ADDRESS: "0xfB1691a1BF872d4cc823563cC3d78bf740225C36"
+      LC_UPAS_FACTORY_ADDRESS: "0xDf8c56d1c4ff6C2f34835513Cd700D4D6A258036"
+      LC_ROUTER_ADDRESS: "0xEdD3C07B254995c2520C28F0D4a0f6082006eFDe"
+      LC_MODE_ADDRESS: "0xAF3b2ebdcc22513339DBa236AEd1660e917B699c"          
     resources:
       cpuLimit: 1
       cpuRequest: 0.1
@@ -123,7 +129,7 @@ node:
 image:
   goquorum:
     repository: fptblockchainlabbot/quorum
-    tag: v22.7.1-fpt.blockchain.lab-0.3.2
+    tag: v22.7.1-fpt.blockchain.lab-0.4.2
   tessera:
     repository: quorumengineering/tessera
     tag: 22.1.1
