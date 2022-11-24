@@ -40,17 +40,16 @@ spec:
     spec:
       containers:
         - name: lc-graph-server
-          securityContext:
-            null
+          securityContext: null
           image: ":v0.1.0"
-          imagePullPolicy: 
-          ports: 
+          imagePullPolicy:
+          ports:
             - name: http
-              containerPort: 8043
+              containerPort: { { .Values.app.containerPort } }
               protocol: TCP
           env:
-            - name: POSTGRES_URL
-              value: "jdbc:postgresql://1.54.89.227:5432/testnet_lc_graph"
+            - name: R_POSTGRES_HOST
+              value: 1.23.24.225
             - name: R_POSTGRES_DATABASE
               value: lcgraph
             - name: R_POSTGRES_USERNAME
@@ -61,6 +60,8 @@ spec:
               value: 5432
             - name: W_POSTGRES_ENABLED
               value: true
+            - name: W_POSTGRES_HOST
+              value: 1.23.24.225
             - name: W_POSTGRES_DATABASE
               value: lcgraph
             - name: W_POSTGRES_USERNAME
@@ -69,7 +70,7 @@ spec:
               value: lcgraph
             - name: W_POSTGRES_PORT
               value: 5432
-          livenessProbe: 
+          livenessProbe:
             failureThreshold: 3
             httpGet:
               path: /health
@@ -100,5 +101,5 @@ spec:
           #   readOnly: true
       volumes:
         - name: config
-          configMap: 
+          configMap:
             name: full-access-configmap

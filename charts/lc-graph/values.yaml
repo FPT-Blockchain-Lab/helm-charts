@@ -1,25 +1,22 @@
 app:
-  env: fullaccess
+  env: only-read
   replicaCount: 1
   image:
-    lc-graph: 
-      repository: https://github.com/FPT-Blockchain-Lab/lc-graph-server
-      tag: main
-      pullPolicy: IfNotPresent
+    repository: fptblockchainlabbot/lc-graph
+    tag: 0.1.0
+    pullPolicy: IfNotPresent
   containerPort: 8043
 
   service:
     type: NodePort
     port: 8043
 
-  # You need to provide some config file. For example, just copy `example_config.toml`
-  config: "config.toml"
-
   # Optional
   ingress:
     enabled: true
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
     hosts:
       - host: lc-graph.local
@@ -52,17 +49,15 @@ app:
 
   postgresql:
     read:
-      database: lcgraph
-      username: lcgraph
-      password: lcgraph
+      host: 1.23.24.225
+      database: postgres
+      username: postgres
+      password: postgres
       port: 5432
     write:
       enabled: false
-      database: lcgraph
-      username: lcgraph
-      password: lcgraph
+      host: 1.23.24.225
+      database: postgres
+      username: postgres
+      password: postgres
       port: 5432
-
-  subgraph:
-    postgrest_connection_url: "jdbc:postgresql://1.54.89.227:5432/testnet_lc_graph"
-    ethereum_jsonrpc_endpoint: goquorum-node-rpc
