@@ -32,6 +32,10 @@ on:
         required: true
         options:
         - goquorum-node
+      quorum_nodeport:
+        description: Choose NodePort for goquorum P2P
+        required: true
+        default: ''
       dry_run:
         type: boolean
         description: 'dryrun'
@@ -69,4 +73,4 @@ jobs:
             --set image.tag=${{ github.event.inputs.image_tag }} \
             --set quorumFlags.permissioned=true \
             --set quorumFlags.enhancedPermissioned=true \
-            --set node.goquorum.p2p.nodePort=31111
+            --set node.goquorum.p2p.nodePort=${{ github.event.inputs.quorum_nodeport }}
