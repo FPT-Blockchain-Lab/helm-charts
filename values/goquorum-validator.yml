@@ -24,12 +24,9 @@ node:
       cpuRequest: 0.1
       memLimit: "2G"
       memRequest: "1G"
-    serviceType: NodePort
-    p2p:
-      nodePort: 31101
 
 storage:
-  storageClass: longhorn
+  storageClass: default
   sizeLimit: "5Gi"
   pvcSizeLimit: "5Gi"
   # NOTE: when you set this to Retain, the volume WILL persist after the chart is delete and you need to manually delete it
