@@ -138,12 +138,12 @@ kubectl delete pod <quorum-explorer-pod-name>
 
 ```bash
 ### Replace value name with the desired environments
-helm install genesis fpt-blc-lab/goquorum-genesis --namespace quorum --create-namespace --values ./values/genesis-goquorum.test.yml --wait-for-jobs
+helm install genesis ./charts/goquorum-genesis --namespace quorum --create-namespace --values ./values/genesis-goquorum.test.yml --wait-for-jobs
 
-helm upgrade --install validator-1 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31101 & \
-helm upgrade --install validator-2 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31102 & \
-helm upgrade --install validator-3 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31103 & \
-helm upgrade --install validator-4 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31104 & \
+helm upgrade --install validator-1 ./charts/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml & \
+helm upgrade --install validator-2 ./charts/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml & \
+helm upgrade --install validator-3 ./charts/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml & \
+helm upgrade --install validator-4 ./charts/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml & \
 helm upgrade --install validator-5 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31105 & \
 helm upgrade --install validator-6 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31106 & \
 helm upgrade --install validator-7 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31107

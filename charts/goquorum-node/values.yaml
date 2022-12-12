@@ -75,7 +75,6 @@ node:
       enabled: true
       addr: "0.0.0.0"
       port: 30303
-      nodePort: 30303
     rpc:
       enabled: true
       lc:
