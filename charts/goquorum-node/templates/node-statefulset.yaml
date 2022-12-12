@@ -37,7 +37,7 @@ spec:
       name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "{{ .Values.storage.storageClass }}"
+      storageClassName: {{ include "goquorum-node.fullname" . }}-storage
       resources:
         requests:
           storage: "{{ .Values.storage.pvcSizeLimit }}"
