@@ -59,7 +59,7 @@ metadata:
   name: {{ include "goquorum-node.fullname" . }}-storage
   namespace: {{ .Release.Namespace }}
   labels:
-    type: local
+    type: local-path
 spec:
   storageClassName: {{ include "goquorum-node.fullname" . }}-storage
   capacity:
