@@ -1,7 +1,7 @@
 ---
 quorumFlags:
   removeGenesisOnDelete: false
-  nodePublicIp: 1.54.xx.xx # UPDATE IT
+  nodePublicIp: null # UPDATE IT
 cluster:
   provider: local  # choose from: local | aws | azure
   cloudNativeServices: false 
@@ -43,5 +43,5 @@ rawGenesisConfig:
   blockchain:
     nodes:
       generate: true
-      count: 7
+      count: 4
     accountPassword: 'password' # changed on the deployment
