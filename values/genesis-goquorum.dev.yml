@@ -42,5 +42,5 @@ rawGenesisConfig:
   blockchain:
     nodes:
       generate: true
-      count: 7
+      count: 4
     accountPassword: 'password' # changed on the deployment
