@@ -141,6 +141,27 @@ entries:
     version: 0.1.1
   goquorum-node:
   - apiVersion: v1
+    appVersion: v22.7.3-fpt.blockchain.lab-0.4.5
+    created: "2022-12-20T05:25:58.903885157Z"
+    description: Quorum node for a POA network using IBFT for consensys
+    digest: 9afceffdece35bcdae0bd3f08ce7e6b15607ae9af405d7cb05e7b12e2c4495b2
+    home: https://github.com/FPT-Blockchain-Lab
+    keywords:
+    - ethereum
+    - enterprise
+    - blockchain
+    - consensys
+    - fpt
+    maintainers:
+    - email: trmaphi@gmail.com
+      name: Truong Ma Phi
+    name: goquorum-node
+    sources:
+    - https://github.com/FPT-Blockchain-Lab/quorum
+    urls:
+    - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/goquorum-node-0.2.15/goquorum-node-0.2.15.tgz
+    version: 0.2.15
+  - apiVersion: v1
     appVersion: v22.7.3-fpt.blockchain.lab-0.4.4
     created: "2022-12-12T07:35:59.849947315Z"
     description: Quorum node for a POA network using IBFT for consensys
@@ -648,4 +669,4 @@ entries:
     urls:
     - https://github.com/FPT-Blockchain-Lab/helm-charts/releases/download/smart-contract-verifier-0.1.0/smart-contract-verifier-0.1.0.tgz
     version: 0.1.0
-generated: "2022-12-12T07:35:59.850124777Z"
+generated: "2022-12-20T05:25:58.904139659Z"
