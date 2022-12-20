@@ -79,7 +79,7 @@ Client Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.1", GitCom
 Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.0", GitCommit:"e8462b5b5dc2584fdcd18e6bcfe9f1e4d970a529", GitTreeState:"clean", BuildDate:"2019-06-19T16:32:14Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-### Production with k3s with single master
+### Staging with k3s with single master/control plane
 
 ***NOTE:*** For the detail, please check the quick start [link](https://rancher.com/docs/k3s/latest/en/quick-start/)
 On the master/control plane node, run
@@ -98,6 +98,10 @@ On the worker node, run
 curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
 # with myserver is the IP/Domain address of the master node, mynodetoken is the /var/lib/rancher/k3s/server/node-token value
 ```
+
+### Production
+
+It's is recommend to run master/control plane with at least 3 nodes to provide high availability
 
 ### Blockchain Explorer
 

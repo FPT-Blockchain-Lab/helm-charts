@@ -23,6 +23,7 @@ azure:
   # the subscription ID to use - this needs to be set explictly when using multi tenancy
   subscriptionId: azure-subscriptionId
 
+## TODO: support hashicorp vault
 # the raw Genesis config
 # rawGenesisConfig.blockchain.nodes set the number of validators/signers
 rawGenesisConfig:

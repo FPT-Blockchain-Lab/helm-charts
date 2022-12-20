@@ -29,7 +29,6 @@ node:
       nodePort: 31101
 
 storage:
-  storageClass: longhorn
   sizeLimit: "5Gi"
   pvcSizeLimit: "5Gi"
   # NOTE: when you set this to Retain, the volume WILL persist after the chart is delete and you need to manually delete it
