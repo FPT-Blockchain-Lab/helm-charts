@@ -2,9 +2,9 @@ app:
   env: fullaccess
   replicaCount: 1
   image:
-    lc-graph: 
-      repository: https://github.com/FPT-Blockchain-Lab/lc-graph-server
-      tag: main
+    lc-graph:
+      repository: fptblockchainlabbot/lc-graph
+      tag: 0.1.0
       pullPolicy: IfNotPresent
   containerPort: 8043
 
@@ -19,7 +19,8 @@ app:
   ingress:
     enabled: true
     className: ""
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/ingress.class: nginx
     hosts:
       - host: lc-graph.local
@@ -62,7 +63,3 @@ app:
       username: lcgraph
       password: lcgraph
       port: 5432
-
-  subgraph:
-    postgrest_connection_url: "jdbc:postgresql://1.54.89.227:5432/testnet_lc_graph"
-    ethereum_jsonrpc_endpoint: goquorum-node-rpc
