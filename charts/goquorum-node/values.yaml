@@ -1,12 +1,11 @@
 ---
-
 quorumFlags:
   privacy: false
   removeKeysOnDelete: false
   updatePeersConfigMap: true
 
 cluster:
-  provider: local  # choose from: local | aws | azure
+  provider: local # choose from: local | aws | azure
   cloudNativeServices: false # set to true to use Cloud Native Services (SecretsManager and IAM for AWS; KeyVault & Managed Identities for Azure)
   reclaimPolicy: Delete # set to either Retain or Delete
 
@@ -32,7 +31,7 @@ storage:
   sizeLimit: "5Gi"
   pvcSizeLimit: "5Gi"
   # NOTE: when you set this to Retain, the volume WILL persist after the chart is delete and you need to manually delete it
-  reclaimPolicy: "Delete" # choose from: Delete | Retain 
+  reclaimPolicy: "Delete" # choose from: Delete | Retain
 
 serviceAccount:
   autoGenerate: true
@@ -45,7 +44,7 @@ node:
       LC_STANDARD_FACTORY_ADDRESS: "0xfB1691a1BF872d4cc823563cC3d78bf740225C36"
       LC_UPAS_FACTORY_ADDRESS: "0xDf8c56d1c4ff6C2f34835513Cd700D4D6A258036"
       LC_ROUTER_ADDRESS: "0xEdD3C07B254995c2520C28F0D4a0f6082006eFDe"
-      LC_MODE_ADDRESS: "0xAF3b2ebdcc22513339DBa236AEd1660e917B699c"          
+      LC_MODE_ADDRESS: "0xAF3b2ebdcc22513339DBa236AEd1660e917B699c"
     resources:
       cpuLimit: 1
       cpuRequest: 0.1
@@ -59,7 +58,7 @@ node:
     replicaCount: 1
     account:
       unlock: 0
-      password: 'password'
+      password: "password"
       passwordPath: "/keys/accountPassword"
     log:
       verbosity: 5
@@ -84,7 +83,7 @@ node:
       port: 8545
       corsDomain: "*"
       vHosts: "*"
-      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul,lc"  
+      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul,lc"
       authenticationEnabled: false
     ws:
       enabled: true
@@ -129,7 +128,7 @@ node:
 image:
   goquorum:
     repository: fptblockchainlabbot/quorum
-    tag: v22.7.3-fpt.blockchain.lab-0.4.4
+    tag: v22.7.3-fpt.blockchain.lab-0.4.5
   tessera:
     repository: quorumengineering/tessera
     tag: 22.1.1
