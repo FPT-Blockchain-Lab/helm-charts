@@ -275,7 +275,7 @@ spec:
 
             geth --datadir={{ .Values.node.goquorum.dataPath }} init {{ .Values.node.goquorum.genesisFilePath }}
             cp {{ .Values.node.goquorum.keysPath }}/nodekey {{ .Values.node.goquorum.dataPath }}/geth/nodekey
-            cp -i /config/static/static-nodes.json {{ .Values.node.goquorum.dataPath }}/geth/static-nodes.json
+            cp -i /config/static/static-nodes.json {{ .Values.node.goquorum.dataPath }}/static-nodes.json
             
             rm {{ .Values.node.goquorum.dataPath }}/permissioned-nodes.json >/dev/null 2>&1
           {{- if .Values.quorumFlags.permissioned }} 
@@ -297,7 +297,11 @@ spec:
           {{- if or (eq .Values.quorumFlags.permissioned  true) (eq .Values.quorumFlags.enhancedPermissioned true) }}
             --permissioned \
           {{- end }}
+          {{- if .Values.node.goquorum.network.extip }}
+            --nat extip:{{ .Values.node.goquorum.network.extip }} \
+          {{- else }}
             --nat extip:$POD_IP \
+          {{- end}}
             --verbosity {{ .Values.node.goquorum.log.verbosity }} \
           {{- if .Values.node.goquorum.rpc.lc.enabled }}
             --lc \
