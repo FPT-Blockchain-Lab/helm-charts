@@ -95,7 +95,8 @@ spec:
           args:
             - |
               sleep 10
-              VERSION=1.0.3; curl -OL https://github.com/FPT-Blockchain-Lab/quorum-enhanced-permission-deployer/archive/refs/tags/$VERSION.tar.gz && tar -xvf $VERSION.tar.gz
+              export VERSION=1.0.4
+              curl -OL https://github.com/FPT-Blockchain-Lab/quorum-enhanced-permission-deployer/archive/refs/tags/1.0.4.tar.gz && tar -xvf 1.0.4.tar.gz
 
               export FOLDER_PATH=$(pwd)/quorum-enhanced-permission-deployer-$VERSION
               cd $FOLDER_PATH && npm install
