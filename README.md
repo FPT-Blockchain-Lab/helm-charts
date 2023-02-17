@@ -219,7 +219,7 @@ quorumPermission.addNode("ADMINORG", "enode://nodekey@nodeip:nodeport?discport=0
 
 Import 4 configmaps
 
-For testnet:
+- For testnet:
 ```
 # goquorum-enhanced-permission-config
 kubectl create configmap goquorum-enhanced-permission-config --from-file values/testnet/goquorum-enhanced-permission-config.yml -o yaml --dry-run | kubectl apply -f -
@@ -231,8 +231,9 @@ kubectl create configmap goquorum-networkid --from-file values/testnet/goquorum-
 kubectl create configmap goquorum-peers --from-file values/testnet/goquorum-peers.yml -o yaml --dry-run | kubectl apply -f -
 ```
 
-For mainnet: (VPN setup requirement)
-t
+- For mainnet: (VPN setup requirement)
+
+
 Then create validator char
 ```
 helm install external-validator-1 ./charts/goquorum-node --namespace quorum --values ./values/goquorum-external-validator.yml
