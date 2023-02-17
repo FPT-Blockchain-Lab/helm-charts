@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  networkId: "6788"
+kind: ConfigMap
+metadata:
+  name: goquorum-networkid
+  namespace: quorum

@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  permission-config.json: '{"permissionModel":"v2","upgradableAddress":"0x40686513a73B3e861810345B08Ca2d952CE8E4F4","interfaceAddress":"0x638449F761362fB1041a75eE92e86a2e8fe92780","implAddress":"0x48272bB87cdA70aCd600B7B8883ada2e799983b8","nodeMgrAddress":"0xeE2EF0e68A72654C20c6f3dfa43e03816f362B4F","accountMgrAddress":"0xc7123BEA05D26823f99bba87a83BADDD021C3c2d","roleMgrAddress":"0x09Ad12B57407dEd24ad2789043F8962fe8679DB3","voterMgrAddress":"0xF5E507788E7eaa9Dbf8f24a5D24C2de1F9192416","orgMgrAddress":"0xf5B2c0829f9485EEB114B11a7C1cb3227B8749Ee","nwAdminOrg":"ADMINORG","nwAdminRole":"ADMIN","orgAdminRole":"ORGADMIN","accounts":["0xaD3e31b0d25aF18616792f557E46b81255f19E5a"],"subOrgBreadth":4,"subOrgDepth":4}'
+kind: ConfigMap
+metadata:
+  name: goquorum-enhanced-permission-config
+  namespace: quorum
