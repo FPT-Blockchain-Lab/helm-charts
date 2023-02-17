@@ -83,7 +83,7 @@ node:
       port: 8545
       corsDomain: "*"
       vHosts: "*"
-      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul,lc"
+      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul"
       authenticationEnabled: false
     ws:
       enabled: true

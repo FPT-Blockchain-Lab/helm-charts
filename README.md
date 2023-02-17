@@ -219,14 +219,23 @@ quorumPermission.addNode("ADMINORG", "enode://nodekey@nodeip:nodeport?discport=0
 
 Import 4 configmaps
 
+For testnet:
 ```
-goquorum-genesis
-goquorum-enhanced-permission-config
-goquorum-peers
-goquorum-networkid
+# goquorum-enhanced-permission-config
+kubectl create configmap goquorum-enhanced-permission-config --from-file values/testnet/goquorum-enhanced-permission-config.yml -o yaml --dry-run | kubectl apply -f -
+# goquorum-genesis
+kubectl create configmap goquorum-genesis --from-file values/testnet/goquorum-genesis.yml -o yaml --dry-run | kubectl apply -f -
+# goquorum-networki
+kubectl create configmap goquorum-networkid --from-file values/testnet/goquorum-networkid.yml -o yaml --dry-run | kubectl apply -f -
+# 
+kubectl create configmap goquorum-peers --from-file values/testnet/goquorum-peers.yml -o yaml --dry-run | kubectl apply -f -
 ```
 
+For mainnet: (VPN setup requirement)
+
+```
 helm install external-validator-1 ./charts/goquorum-node --namespace quorum --values ./values/goquorum-external-validator.yml
+```
 
 ### LC protocol
 
