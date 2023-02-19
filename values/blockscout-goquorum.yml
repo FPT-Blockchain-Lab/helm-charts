@@ -25,6 +25,7 @@ secretEnv:
   LOGO: "/images/blockscout_logo.svg"
   PORT: "4000"
   DATABASE_URL: "ecto://blockscout:blockscout@postgresql.quorum.svc.cluster.local:5432/blockscout?ssl=false"
+  ECTO_USE_SSL: "false"
   SUBNETWORK: consensys
   CHAIN_ID: "6788"
   COIN_NAME: eth
