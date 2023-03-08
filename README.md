@@ -1,3 +1,11 @@
+## **Online networks configs**
+
+The current online network configuration can be found at `values/{{network}}` ex: `values/testnet`. They include:
+- goquorum-genesis.yml (genesis config)
+- networkid (evm network id)
+- goquorum-peers.yml (static trusted nodes, also used for permission nodes)
+- goquorum-enhanced-permission-config.yml (quorum eea-compatible v3 smart contract addresses)
+
 ## **Helm Charts Repo Usage**
 
 [Helm](https://helm.sh) must be installed to use the charts.  Please refer to
