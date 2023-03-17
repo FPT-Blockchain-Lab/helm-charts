@@ -3,6 +3,7 @@
 quorumFlags:
   removeGenesisOnDelete: true
   nodePublicIp: null
+  onlyGenerateKeys: false
 
 cluster:
   provider: local  # choose from: local | aws | azure
@@ -32,7 +33,7 @@ rawGenesisConfig:
     config:
       chainId: 1337
       algorithm: 
-        consensus: qbft # choose from: ibft | qbft | raft | clique
+        consensus: qbft # choose from: ibft | qbft | raft | clique https://github.com/ConsenSys/quorum-genesis-tool/blob/master/src/index.ts#L31
         blockperiodseconds: 10
         emptyBlockPeriod: 60
         epochlength: 30000

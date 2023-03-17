@@ -2,7 +2,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "goquorum-genesis.name" . }}-init
+{{- if .Values.quorumFlags.onlyGenerateKeys }}   
+  name: {{ .Release.Name }}-init
+{{- else }}
+  name: {{ .Release.Name }}-with-genesis-peers-init
+{{- end }}
   labels:
 {{- if and (eq .Values.cluster.provider "azure") (.Values.cluster.cloudNativeServices) }}
     aadpodidbinding: "{{ .Values.azure.identityName }}"
@@ -117,10 +121,11 @@ spec:
 
               echo $FOLDER_PATH
               echo "Creating genesis configmap in k8s ..."
-              
+
+{{- if not .Values.quorumFlags.onlyGenerateKeys }}             
               safeWriteNetworkIdConfigmap
               safeWriteGenesisConfigmap $FOLDER_PATH
-
+{{- end}}
               # create the static-nodes with proper dns names for the quorum nodes  
               echo "[" > /generated-config/static-nodes.json
 
@@ -137,31 +142,36 @@ spec:
 {{- if and (ne .Values.cluster.provider "local") (.Values.cluster.cloudNativeServices) }}
 
                   echo "Using cloud native services"
-                  safeWriteSecret goquorum-node-validator-${i}-nodekey $FOLDER_PATH/${f}/nodekey
-                  safeWriteSecret goquorum-node-validator-${i}-nodekeypub $FOLDER_PATH/${f}/nodekey.pub 
-                  safeWriteSecret goquorum-node-validator-${i}-enode $FOLDER_PATH/${f}/nodekey.pub 
-                  safeWriteSecret goquorum-node-validator-${i}-address $FOLDER_PATH/${f}/address
-                  kubectl create configmap --namespace {{ .Release.Namespace }} goquorum-node-validator-${i}-address --from-file=address=$FOLDER_PATH/${f}/address
-
-                  safeWriteSecret goquorum-node-validator-${i}-accountPrivateKey $FOLDER_PATH/${f}/accountPrivateKey
-                  safeWriteSecret goquorum-node-validator-${i}-accountPassword $FOLDER_PATH/${f}/accountPassword
-                  safeWriteSecret goquorum-node-validator-${i}-accountKeystore $FOLDER_PATH/${f}/accountKeystore 
-                  safeWriteSecret goquorum-node-validator-${i}-accountAddress $FOLDER_PATH/${f}/accountAddress 
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-nodekey $FOLDER_PATH/${f}/nodekey
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-nodekeypub $FOLDER_PATH/${f}/nodekey.pub 
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-enode $FOLDER_PATH/${f}/nodekey.pub 
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-address $FOLDER_PATH/${f}/address
+{{- if not .Values.quorumFlags.onlyGenerateKeys }}                  
+                  kubectl create configmap --namespace {{ .Release.Namespace }} {{ .Release.Name | quote }}-${i}-address --from-file=address=$FOLDER_PATH/${f}/address
+{{- end }}
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-accountPrivateKey $FOLDER_PATH/${f}/accountPrivateKey
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-accountPassword $FOLDER_PATH/${f}/accountPassword
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-accountKeystore $FOLDER_PATH/${f}/accountKeystore 
+                  safeWriteSecret {{ .Release.Name | quote }}-${i}-accountAddress $FOLDER_PATH/${f}/accountAddress 
                   
 {{- else }}
 
                   echo "Using k8s secrets"
-                  safeWriteSecret goquorum-node-validator-${i} "$FOLDER_PATH/${f}"
-                  kubectl create configmap --namespace {{ .Release.Namespace }} goquorum-node-validator-${i}-address --from-file=address=$FOLDER_PATH/${f}/address
+                  safeWriteSecret {{ .Release.Name | quote }}-${i} "$FOLDER_PATH/${f}"
+{{- if not .Values.quorumFlags.onlyGenerateKeys }}
+                  kubectl create configmap --namespace {{ .Release.Namespace }} {{ .Release.Name | quote }}-${i}-address --from-file=address=$FOLDER_PATH/${f}/address
+{{- end }}
 
 {{- end }}
 
+{{- if not .Values.quorumFlags.onlyGenerateKeys }}
                   # add to the static-nodes
                   pubkey=$(cat $FOLDER_PATH/${f}/nodekey.pub )
 {{- if .Values.quorumFlags.nodePublicIp }}
                   echo ",\"enode://$pubkey@{{ .Values.quorumFlags.nodePublicIp }}:$((i + 31100))?discport=0\"" >> /generated-config/static-nodes.json
 {{- else }}
-                  echo ",\"enode://$pubkey@goquorum-node-validator-$i.{{ .Release.Namespace }}.svc.cluster.local:30303?discport=0\"" >> /generated-config/static-nodes.json
+                  echo ",\"enode://$pubkey@{{ .Release.Name | quote }}-$i.{{ .Release.Namespace }}.svc.cluster.local:30303?discport=0\"" >> /generated-config/static-nodes.json
+{{- end }}
 {{- end }}
 
                   i=$((i+1))
@@ -171,6 +181,8 @@ spec:
               echo "]" >> /generated-config/static-nodes.json
               # remove the extra comma to make it valid json
               sed -i '0,/,/s///' /generated-config/static-nodes.json
-              safeWriteQuorumPeersConfigmap
 
+{{- if not .Values.quorumFlags.onlyGenerateKeys }}
+              safeWriteQuorumPeersConfigmap
+{{- end }}
               echo "Completed ..."
