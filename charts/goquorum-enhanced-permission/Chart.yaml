@@ -10,9 +10,9 @@ keywords:
   - blockchain
   - pegasys
   - consensys
-home: https://consensys.net/quorum/
+home: https://github.com/FPT-Blockchain-Lab
 sources:
-  - https://consensys.net/quorum/
+  - https://github.com/FPT-Blockchain-Lab
 maintainers:
   - name: Toan Le
     email: toanledev@gmail.com

@@ -150,7 +150,7 @@ kubectl delete pod <quorum-explorer-pod-name>
 
 ```bash
 ### Replace value name with the desired environments
-helm install genesis fpt-blc-lab/goquorum-genesis --namespace quorum --create-namespace --values ./values/genesis-goquorum.test.yml --wait-for-jobs
+helm install genesis fpt-blc-lab/goquorum-genesis --namespace quorum --create-namespace --values ./values/genesis-goquorum.yml --wait-for-jobs
 
 helm upgrade --install validator-1 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31101 & \
 helm upgrade --install validator-2 fpt-blc-lab/goquorum-node --namespace quorum --values ./values/goquorum-validator.yml --set node.goquorum.p2p.nodePort=31102 & \
