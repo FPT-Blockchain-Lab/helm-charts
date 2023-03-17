@@ -303,7 +303,7 @@ spec:
             --nat extip:$POD_IP \
           {{- end}}
             --verbosity {{ .Values.node.goquorum.log.verbosity }} \
-          {{- if .Values.node.goquorum.rpc.lc.enabled }}
+          {{- if .Values.node.goquorum.rpc.api contains "lc" }}
             --lc \
           {{- end}}
           {{- if .Values.quorumFlags.mine }}

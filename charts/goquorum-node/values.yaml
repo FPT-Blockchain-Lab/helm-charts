@@ -2,7 +2,9 @@
 quorumFlags:
   privacy: false
   removeKeysOnDelete: false
-  updatePeersConfigMap: true
+  updatePeersConfigMap: false
+  permissioned: false
+  enhancedPermissioned: false
 
 cluster:
   provider: local # choose from: local | aws | azure
@@ -38,13 +40,8 @@ serviceAccount:
 
 node:
   goquorum:
-    env:
-      LC_ADMEND_REQUEST_ADDRESS: "0x9043A4b3ABF6210cdfA95e7ef9B2e1fC8D17d38E"
-      LC_MANAGEMENT_ADDRESS: "0x3179C0dDF36a95A9BaEe917fF2D4dbFa08B51462"
-      LC_STANDARD_FACTORY_ADDRESS: "0xfB1691a1BF872d4cc823563cC3d78bf740225C36"
-      LC_UPAS_FACTORY_ADDRESS: "0xDf8c56d1c4ff6C2f34835513Cd700D4D6A258036"
-      LC_ROUTER_ADDRESS: "0xEdD3C07B254995c2520C28F0D4a0f6082006eFDe"
-      LC_MODE_ADDRESS: "0xAF3b2ebdcc22513339DBa236AEd1660e917B699c"
+    network:
+      extIp: 0.0.0.0
     resources:
       cpuLimit: 1
       cpuRequest: 0.1
@@ -67,23 +64,20 @@ node:
       blockPeriod: 5
     serviceType: ClusterIP
     qlightServer:
-      enabled: true
+      enabled: false
       addr: "0.0.0.0"
-      port: 30305
+      port: 30303
     p2p:
       enabled: true
       addr: "0.0.0.0"
       port: 30303
-      nodePort: 30303
     rpc:
       enabled: true
-      lc:
-        enabled: true
       addr: "0.0.0.0"
       port: 8545
       corsDomain: "*"
       vHosts: "*"
-      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul"
+      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul"  
       authenticationEnabled: false
     ws:
       enabled: true
