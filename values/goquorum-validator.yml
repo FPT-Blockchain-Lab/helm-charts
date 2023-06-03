@@ -17,6 +17,8 @@ cluster:
 
 node:
   goquorum:
+    gcmode: "full"
+    syncmode: "full"
     metrics:
       serviceMonitorEnabled: true
     resources:
