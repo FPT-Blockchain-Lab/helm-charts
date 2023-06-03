@@ -30,7 +30,8 @@ node:
     p2p:
       nodePort: 31101
     network:
-      extip: 1.54.89.17
+      extip: null
+      # extip: 1.54.89.17
 
 storage:
   sizeLimit: "5Gi"
