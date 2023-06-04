@@ -68,7 +68,7 @@ node:
     qlightServer:
       enabled: false
       addr: "0.0.0.0"
-      port: 30303
+      port: 30305
     p2p:
       enabled: true
       addr: "0.0.0.0"
