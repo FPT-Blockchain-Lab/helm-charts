@@ -41,6 +41,9 @@ spec:
       port: {{ .Values.node.goquorum.p2p.port }}
       targetPort: rlpx
       protocol: TCP
+      {{- if eq .Values.node.goquorum.serviceType "NodePort" }}
+      nodePort: {{ .Values.node.goquorum.p2p.nodePort }}
+      {{- end }}
     - name: qlight-server
       port: {{ .Values.node.goquorum.qlightServer.port }}
       targetPort: qlight-server
@@ -49,6 +52,9 @@ spec:
       port: {{ .Values.node.goquorum.p2p.port }}
       targetPort: discovery
       protocol: UDP
+      {{- if eq .Values.node.goquorum.serviceType "NodePort" }}
+      nodePort: {{ .Values.node.goquorum.p2p.nodePort }}
+      {{- end }}
     - name: metrics
       port: {{ .Values.node.goquorum.metrics.pprofport }}
       targetPort: metrics
