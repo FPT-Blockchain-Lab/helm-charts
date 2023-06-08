@@ -31,12 +31,12 @@ Quorum node for a POA network using IBFT for consensys
 | cluster.provider | string | `"local"` |  |
 | cluster.reclaimPolicy | string | `"Delete"` |  |
 | image.goquorum.repository | string | `"fptblockchainlabbot/quorum"` |  |
-| image.goquorum.tag | string | `"v22.7.4-fpt.blockchain.lab-0.5.1"` |  |
+| image.goquorum.tag | string | `"v23.4.0-fpt.blockchain.lab-0.5.4"` |  |
 | image.hooks.pullPolicy | string | `"IfNotPresent"` |  |
 | image.hooks.repository | string | `"consensys/quorum-k8s-hooks"` |  |
 | image.hooks.tag | string | `"qgt-0.2.3"` |  |
 | image.tessera.repository | string | `"quorumengineering/tessera"` |  |
-| image.tessera.tag | string | `"22.1.1"` |  |
+| image.tessera.tag | string | `"23.4.0"` |  |
 | node.goquorum.account.password | string | `"password"` |  |
 | node.goquorum.account.passwordPath | string | `"/keys/accountPassword"` |  |
 | node.goquorum.account.unlock | int | `0` |  |

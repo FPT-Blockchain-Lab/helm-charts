@@ -124,10 +124,10 @@ node:
 image:
   goquorum:
     repository: fptblockchainlabbot/quorum
-    tag: v22.7.4-fpt.blockchain.lab-0.5.1
+    tag: v23.4.0-fpt.blockchain.lab-0.5.4
   tessera:
     repository: quorumengineering/tessera
-    tag: 22.1.1
+    tag: 23.4.0
   hooks:
     repository: consensys/quorum-k8s-hooks
     tag: qgt-0.2.3
