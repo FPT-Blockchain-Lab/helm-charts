@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-proxy
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-proxy
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-proxy
+    spec:
+      containers:
+      - name: multitool
+        image: praqma/network-multitool
+        env:
+        - name: http_proxy
+          value: "http://proxy.fpt.vn:80"
+        - name: https_proxy
+          value: "http://proxy.fpt.vn:80"
+        - name: no_proxy
+          value: "localhost,127.0.0.1,10.0.0.0/8,172.19.0.0/16"
