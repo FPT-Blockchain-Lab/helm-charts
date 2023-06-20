@@ -52,9 +52,12 @@ spec:
             {{- toYaml .Values.customCommand | nindent 12}}
           {{- else }}
           command:
-            - bash
+            - /bin/sh
             - -c
-            - "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"
+          args:
+            - |
+              exec
+              cd /opt/app/ && echo $$MIX_ENV && mix do ecto.create, ecto.migrate; mix phx.server;
           {{- end }}
           {{- if gt (len .Values.customArgs) 0 }}
           args:

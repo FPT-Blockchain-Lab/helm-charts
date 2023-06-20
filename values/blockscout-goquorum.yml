@@ -1,7 +1,7 @@
 ---
 image:
-  repository: blockscout/blockscout
-  tag: 4.1.8
+  repository: ktoanlba/blockscout-quorum
+  tag: v4.0.0-beta
   pullPolicy: IfNotPresent
 
 # blockscout: # cpu dependent
@@ -24,7 +24,8 @@ image:
 secretEnv:
   LOGO: "/images/blockscout_logo.svg"
   PORT: "4000"
-  DATABASE_URL: "ecto://blockscout:blockscout@postgresql.quorum.svc.cluster.local:5432/blockscout?ssl=false"
+  # DATABASE_URL: "ecto://blockscout:blockscout@postgresql.quorum.svc.cluster.local:5432/blockscout?ssl=false"
+  DATABASE_URL: postgresql://postgres:postgres@blockscout-postgresql:5432/explorer?ssl=false
   ECTO_USE_SSL: "false"
   SUBNETWORK: consensys
   CHAIN_ID: "6788"
@@ -35,3 +36,6 @@ secretEnv:
   JSON_RPC: "http://goquorum-node-validator-1.quorum.svc.cluster.local:8545"
   SECRET_KEY_BASE: "56NtB48ear7+wMSf0IQuWDAAazhpb31qyc7GiyspBP2vh7t5zlCsF5QDv76chXeN" # change me please
   RUST_VERIFICATION_SERVICE_URL: "blockscout-smart-contract-verifier.quorum.svc.cluster.local:8043"
+
+postgresql:
+  enabled: true
