@@ -202,8 +202,6 @@ spec:
               configMapKeyRef:
                 name: goquorum-networkid
                 key: networkId
-          - name: QUORUM_CONSENSUS
-            value: istanbul
           {{- range $name, $value := .Values.node.goquorum.env }}
           - name: {{ $name }}
             value: {{ $value }}
@@ -307,7 +305,7 @@ spec:
             --lc \
           {{- end}}
           {{- if .Values.quorumFlags.mine }}
-            --istanbul.blockperiod {{ .Values.node.goquorum.miner.blockPeriod }} --mine --miner.threads {{ .Values.node.goquorum.miner.threads }} --miner.gasprice 0 --emitcheckpoints \
+            --mine --miner.threads {{ .Values.node.goquorum.miner.threads }} --miner.gasprice 0 --emitcheckpoints \
           {{- end }}
             --gcmode={{ .Values.node.goquorum.gcmode }} \
             --syncmode {{ .Values.node.goquorum.syncmode }} --nousb \
