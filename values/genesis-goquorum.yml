@@ -3,9 +3,9 @@ quorumFlags:
   removeGenesisOnDelete: false
 
 cluster:
-  provider: local  # choose from: local | aws | azure
-  cloudNativeServices: false 
-  
+  provider: local # choose from: local | aws | azure
+  cloudNativeServices: false
+
 aws:
   # the aws cli commands uses the name 'quorum-node-secrets-sa' so only change this if you altered the name
   serviceAccountName: quorum-node-secrets-sa
@@ -36,12 +36,12 @@ rawGenesisConfig:
         emptyBlockPeriod: 60
         epochlength: 10000 # Number of blocks that should pass before pending validator votes are reset
         requesttimeoutseconds: 10 # Minimum request timeout for each IBFT or QBFT round in milliseconds
-    gasLimit: '0x47b760'
-    difficulty: '0x1'
-    coinbase: '0x0000000000000000000000000000000000000000'
+    gasLimit: "0x47b760"
+    difficulty: "0x1"
+    coinbase: "0x0000000000000000000000000000000000000000"
     includeQuickStartAccounts: false # set to true if you would like to use the quorum-dev-quickstart test accounts. This setting will be forced false if cloudNativeServices is set to true which is assuming a prod environment
   blockchain:
     nodes:
       generate: true
-      count: 7
-    accountPassword: 'password' # changed on the deployment
+      count: 5
+    accountPassword: "password" # changed on the deployment

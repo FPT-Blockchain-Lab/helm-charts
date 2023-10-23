@@ -1,18 +1,17 @@
 ---
-
 quorumFlags:
   privacy: false
   removeKeysOnDelete: false
   mine: true
   permissioned: false
   enhancedPermissioned: false
-  isBootnode: false    # Besu only, set this to true if this node is a bootnode
-  usesBootnodes: false # Besu only, set this to true if the network you are connecting to use a bootnode/s that are deployed in the cluster 
-  updatePeersConfigMap: false # Disable pre-install-hook for manual modify goquorum-peers configmap 
+  isBootnode: false # Besu only, set this to true if this node is a bootnode
+  usesBootnodes: false # Besu only, set this to true if the network you are connecting to use a bootnode/s that are deployed in the cluster
+  updatePeersConfigMap: false # Disable pre-install-hook for manual modify goquorum-peers configmap
 
 cluster:
-  provider: local  # choose from: local | aws | azure
-  cloudNativeServices: false 
+  provider: local # choose from: local | aws | azure
+  cloudNativeServices: false
   reclaimPolicy: Delete # set to either Retain or Delete; note that PVCs and PVs will still exist after a 'helm delete'. Setting to Retain will keep volumes even if PVCs/PVs are deleted in kubernetes. Setting to Delete will remove volumes from EC2 EBS when PVC is deleted
 
 node:
@@ -22,10 +21,10 @@ node:
     metrics:
       serviceMonitorEnabled: true
     resources:
-      cpuLimit: 1
-      cpuRequest: 0.1
-      memLimit: "2G"
-      memRequest: "1G"
+      cpuLimit: 2
+      cpuRequest: 1
+      memLimit: "4G"
+      memRequest: "2G"
     serviceType: NodePort
     p2p:
       nodePort: 31101
@@ -34,7 +33,7 @@ node:
       # extip: 1.54.89.17
 
 storage:
-  sizeLimit: "5Gi"
-  pvcSizeLimit: "5Gi"
+  sizeLimit: "50Gi"
+  pvcSizeLimit: "50Gi"
   # NOTE: when you set this to Retain, the volume WILL persist after the chart is delete and you need to manually delete it
-  reclaimPolicy: "Delete" # choose from: Delete | Retain 
+  reclaimPolicy: "Delete" # choose from: Delete | Retain
