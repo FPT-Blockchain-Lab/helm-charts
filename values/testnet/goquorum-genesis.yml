@@ -3,9 +3,9 @@ data:
   genesis.json: |-
     {
       "nonce": "0x0",
-      "timestamp": "0x58ee40ba",
-      "extraData": "0xf8b9a00000000000000000000000000000000000000000000000000000000000000000f89394386f3dbcdc2c52d67e1f3827e408ff26af33e955942849804d5ca9ca53f6b25c0d49c54274b27d38fa948bb65c570bcb74faca7f67f01d356aca990a535f947bcf7b41975f58fcaf76d714063d84fb8eccab2294e2474268451ae539da610b00d383ad9effa3a5a6948412d56d4fc6d2137d0a82a8acc952f640ac501594eaed34085740bab8b5131e24ee3128da269f0b9ec080c0",
-      "gasLimit": "0x47b760",
+      "timestamp": "0x653d306a",
+      "extraData": "0xf87aa00000000000000000000000000000000000000000000000000000000000000000f85494245eb0135cb9b74ccfd2da40f64d752ab92f094394e20569eec835cf8aab0e94040cea6efa8a81fe4c94512e0e53b5b713172f6d4e6bbbc45e6505ac58c294c182c89edfa769cf6ea792eefd46bd1e88dae1d3c080c0",
+      "gasLimit": "0x2faf0800",
       "gasUsed": "0x0",
       "number": "0x0",
       "difficulty": "0x1",
@@ -13,7 +13,7 @@ data:
       "mixHash": "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
       "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
       "config": {
-        "chainId": 6788,
+        "chainId": 6787,
         "homesteadBlock": 0,
         "eip150Block": 0,
         "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
@@ -30,34 +30,26 @@ data:
         ],
         "txnSizeLimit": 64,
         "qbft": {
-          "policy": 0,
-          "epoch": 10000,
+          "policy": 1,
+          "epoch": 86400,
           "ceil2Nby3Block": 0,
           "testQBFTBlock": 0,
-          "blockperiodseconds": 5,
-          "emptyblockperiodseconds": 60
+          "blockperiodseconds": 1,
+          "requesttimeoutseconds": 3,
+          "emptyblockperiodseconds": 3600
         }
       },
       "alloc": {
-        "0xffab22dcf727012ba6fad813a304a9d86d6c725d": {
+        "0xde500010e9965bd0b1a5ab42acbe71f974c41c2f": {
           "balance": "1000000000000000000000000000"
         },
-        "0x4daffb657b905729a58b02037a70dfb56cdf634b": {
+        "0x3041061f44e3376e0b0d7ac38e73cea433e3d845": {
           "balance": "1000000000000000000000000000"
         },
-        "0xad3e31b0d25af18616792f557e46b81255f19e5a": {
+        "0xe262ac9570028a7fa2b200f7f824cfe61b239132": {
           "balance": "1000000000000000000000000000"
         },
-        "0xf40db5f57030a7dd7964b9b45354f2f59452ff08": {
-          "balance": "1000000000000000000000000000"
-        },
-        "0xaf7e2f335f6a89471751dea3da3bfec43b6d5066": {
-          "balance": "1000000000000000000000000000"
-        },
-        "0x179237a50fc791a3077a329872743426cf57ac2b": {
-          "balance": "1000000000000000000000000000"
-        },
-        "0x93faf72529436ff10bd1ade56eed0a77e4fd6012": {
+        "0x168bd3bb24b364290348eed81a5880b1d49f250e": {
           "balance": "1000000000000000000000000000"
         }
       }
