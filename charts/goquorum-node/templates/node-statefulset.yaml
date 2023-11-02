@@ -310,7 +310,7 @@ spec:
             --istanbul.blockperiod {{ .Values.node.goquorum.miner.blockPeriod }} --mine --miner.threads {{ .Values.node.goquorum.miner.threads }} --miner.gasprice 0 --emitcheckpoints \
           {{- end }}
             --gcmode=archive \
-            --syncmode full --nousb \
+            --syncmode archive --nousb \
             --metrics --pprof --pprof.addr {{ .Values.node.goquorum.metrics.pprofaddr | quote }} --pprof.port {{ .Values.node.goquorum.metrics.pprofport }} \
             --networkid $QUORUM_NETWORK_ID \
             --port {{ .Values.node.goquorum.p2p.port }} \
