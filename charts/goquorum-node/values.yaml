@@ -40,7 +40,7 @@ serviceAccount:
 
 node:
   goquorum:
-    gcmode: "full"
+    gcmode: "archive"
     syncmode: "full"
     network:
       extIp: 0.0.0.0
